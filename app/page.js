@@ -1,101 +1,79 @@
-import Image from "next/image";
+import Script from "next/script";
+import EventModal from "../components/EventModal";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import About from "../components/About";
+import Services from "../components/Services";
+import FullSwing from "../components/FullSwing";
+import Pricing from "../components/Pricing";
+import Experience from "../components/Experience";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // Schema.org 구조화된 데이터
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    name: "식스언더골프클럽",
+    description:
+      "남양주 No.1 골프 교육 클럽으로 최고의 교육과 시설을 제공합니다.",
+    url: "https://www.sixundergolf.com",
+    telephone: "031-123-4567",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "OO로 123번길 45",
+      addressLocality: "남양주시",
+      addressRegion: "경기도",
+      postalCode: "12345",
+      addressCountry: "KR",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "37.12345", // 실제 위도로 변경 필요
+      longitude: "127.12345", // 실제 경도로 변경 필요
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "22:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday", "Sunday"],
+        opens: "08:00",
+        closes: "20:00",
+      },
+    ],
+    offers: {
+      "@type": "Offer",
+      name: "골프 레슨 프로그램",
+      description: "개인 맞춤형 골프 레슨으로 당신의 실력 향상을 도와드립니다",
+      price: "60000",
+      priceCurrency: "KRW",
+    },
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  return (
+    <main>
+      {/* 구조화된 데이터 추가 */}
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <EventModal />
+      <Header />
+      <Hero />
+      <About />
+      <Services />
+      <FullSwing />
+      <Pricing />
+      <Experience />
+      <Contact />
+      <Footer />
+    </main>
   );
 }
