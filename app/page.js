@@ -7,6 +7,8 @@ import Services from "../components/Services";
 import FullSwing from "../components/FullSwing";
 import Pricing from "../components/Pricing";
 import Experience from "../components/Experience";
+import SuccessStories from "../components/SuccessStories";
+import InstagramFeed from "../components/InstagramFeed";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
@@ -70,8 +72,10 @@ export default function Home() {
       <About />
       <Services />
       <FullSwing />
+      <SuccessStories />
       <Pricing />
       <Experience />
+      <InstagramFeed />
       <Contact />
       <Footer />
     </main>

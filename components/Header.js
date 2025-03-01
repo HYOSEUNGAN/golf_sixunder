@@ -25,6 +25,12 @@ export default function Header() {
           >
             FULL SWING
           </Link>
+          <Link
+            href="#success-stories"
+            className="text-gray-700 hover:text-green-700"
+          >
+            성공 사례
+          </Link>
           <Link href="#pricing" className="text-gray-700 hover:text-green-700">
             가격 안내
           </Link>
@@ -33,6 +39,12 @@ export default function Header() {
             className="text-gray-700 hover:text-green-700"
           >
             경력
+          </Link>
+          <Link
+            href="#instagram-feed"
+            className="text-gray-700 hover:text-green-700"
+          >
+            인스타그램
           </Link>
           <Link href="#contact" className="text-gray-700 hover:text-green-700">
             문의
