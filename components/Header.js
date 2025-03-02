@@ -1,52 +1,71 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // 스크롤 이벤트 감지
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="w-full bg-white shadow-md sticky top-0 z-40">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header
+      className={`w-full bg-white shadow-md sticky top-0 z-40 transition-all duration-300 ${
+        scrolled ? "py-2" : "py-4"
+      }`}
+    >
+      <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link href="/" className="font-bold text-2xl text-green-700">
-            식스언더골프클럽
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo.jpeg"
+              alt="식스언더골프클럽"
+              width={40}
+              height={40}
+              className="mr-2"
+            />
+            <span className="font-bold text-xl">식스언더골프클럽</span>
           </Link>
         </div>
 
-        <nav className="hidden md:flex space-x-8">
-          <Link href="#about" className="text-gray-700 hover:text-green-700">
+        <nav className="hidden md:flex space-x-8 font-bold">
+          <Link href="#about" className="text-gray-700 hover:text-red-700">
             소개
           </Link>
-          <Link href="#services" className="text-gray-700 hover:text-green-700">
+          <Link href="#services" className="text-gray-700 hover:text-red-700">
             프로그램
           </Link>
-          <Link
-            href="#fullswing"
-            className="text-gray-700 hover:text-green-700"
-          >
+          <Link href="#fullswing" className="text-gray-700 hover:text-red-700">
             FULL SWING
           </Link>
           <Link
             href="#success-stories"
-            className="text-gray-700 hover:text-green-700"
+            className="text-gray-700 hover:text-red-700"
           >
             성공 사례
           </Link>
-          <Link href="#pricing" className="text-gray-700 hover:text-green-700">
+          <Link href="#pricing" className="text-gray-700 hover:text-red-700">
             가격 안내
           </Link>
-          <Link
-            href="#experience"
-            className="text-gray-700 hover:text-green-700"
-          >
+          <Link href="#experience" className="text-gray-700 hover:text-red-700">
             경력
           </Link>
           <Link
             href="#instagram-feed"
-            className="text-gray-700 hover:text-green-700"
+            className="text-gray-700 hover:text-red-700"
           >
             인스타그램
           </Link>
-          <Link href="#contact" className="text-gray-700 hover:text-green-700">
+          <Link href="#contact" className="text-gray-700 hover:text-red-700">
             문의
           </Link>
         </nav>
@@ -58,8 +77,12 @@ export default function Header() {
             rel="noopener noreferrer"
             className="text-gray-700 hover:text-pink-600"
           >
-            <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.06 1.805.249 2.227.419.562.217.96.477 1.382.896.419.42.679.819.896 1.381.17.422.36 1.057.42 2.227.057 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.06 1.17-.249 1.805-.42 2.227-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.422.17-1.057.36-2.227.42-1.266.057-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.06-1.805-.249-2.227-.42-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.17-.422-.36-1.057-.42-2.227-.057-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.06-1.17.249-1.805.42-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.17 1.057-.36 2.227-.42 1.266-.057 1.646-.07 4.85-.07zm0 2.122c-3.16 0-3.508.014-4.743.069-1.144.055-1.765.243-2.178.404-.547.21-.937.46-1.35.873-.412.412-.663.803-.873 1.35-.161.413-.35 1.034-.404 2.178-.055 1.235-.069 1.583-.069 4.743s.014 3.508.069 4.743c.055 1.144.243 1.765.404 2.178.21.547.46.937.873 1.35.412.412.803.663 1.35.873.413.161 1.034.35 2.178.404 1.235.055 1.583.069 4.743.069s3.508-.014 4.743-.069c1.144-.055 1.765-.243 2.178-.404.547-.21.937-.46 1.35-.873.412-.412.663-.803.873-1.35.161-.413.35-1.034.404-2.178.055-1.235.069-1.583.069-4.743s-.014-3.508-.069-4.743c-.055-1.144-.243-1.765-.404-2.178-.21-.547-.46-.937-.873-1.35-.412-.412-.803-.663-1.35-.873-.413-.161-1.034-.35-2.178-.404-1.235-.055-1.583-.069-4.743-.069zm0 3.622a6.093 6.093 0 110 12.186 6.093 6.093 0 010-12.186zm0 10.063a3.97 3.97 0 100-7.94 3.97 3.97 0 000 7.94zm7.794-10.314a1.424 1.424 0 100-2.848 1.424 1.424 0 000 2.848z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              className="h-6 w-6 fill-current"
+            >
+              <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
             </svg>
           </a>
           <a
@@ -68,15 +91,21 @@ export default function Header() {
             rel="noopener noreferrer"
             className="text-gray-700 hover:text-green-500"
           >
-            <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            <svg className="h-6 w-6" viewBox="0 0 24 24">
+              <path
+                fill="#03c75a"
+                d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"
+              />
             </svg>
           </a>
         </div>
 
         <div className="md:hidden">
           {/* 모바일 메뉴 버튼 */}
-          <button className="text-gray-700">
+          <button
+            className="text-gray-700"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -94,6 +123,70 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      {/* 모바일 메뉴 */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white py-4 px-4 shadow-lg">
+          <nav className="flex flex-col space-y-4">
+            <Link
+              href="#about"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              소개
+            </Link>
+            <Link
+              href="#services"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              프로그램
+            </Link>
+            <Link
+              href="#fullswing"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              FULL SWING
+            </Link>
+            <Link
+              href="#success-stories"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              성공 사례
+            </Link>
+            <Link
+              href="#pricing"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              가격 안내
+            </Link>
+            <Link
+              href="#experience"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              경력
+            </Link>
+            <Link
+              href="#instagram-feed"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              인스타그램
+            </Link>
+            <Link
+              href="#contact"
+              className="text-gray-700 hover:text-red-700 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              문의
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

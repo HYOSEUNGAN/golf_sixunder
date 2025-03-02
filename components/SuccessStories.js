@@ -16,23 +16,23 @@ export default function SuccessStories() {
       period: "3개월",
       description:
         "드라이버 비거리가 30야드 향상되고 슬라이스가 크게 개선되었습니다.",
-      beforeImage: "/images/before-1.jpg", // 실제 이미지로 교체 필요
-      afterImage: "/images/after-1.jpg", // 실제 이미지로 교체 필요
+      beforeImage: "/images/자세1.jpeg", // 실제 이미지로 교체 필요
+      afterImage: "/images/자세2.jpeg", // 실제 이미지로 교체 필요
     },
     {
       name: "이지연 회원님",
       period: "2개월",
       description:
         "어프로치 정확도가 눈에 띄게 향상되어 평균 타수가 5타 감소했습니다.",
-      beforeImage: "/images/before-2.jpg", // 실제 이미지로 교체 필요
-      afterImage: "/images/after-2.jpg", // 실제 이미지로 교체 필요
+      beforeImage: "/images/자세3.jpeg", // 실제 이미지로 교체 필요
+      afterImage: "/images/자세4.jpeg", // 실제 이미지로 교체 필요
     },
     {
       name: "박준혁 회원님",
       period: "4개월",
       description: "스윙 자세 교정을 통해 일관된 볼 컨트롤이 가능해졌습니다.",
-      beforeImage: "/images/before-3.jpg", // 실제 이미지로 교체 필요
-      afterImage: "/images/after-3.jpg", // 실제 이미지로 교체 필요
+      beforeImage: "/images/자세1.jpeg", // 실제 이미지로 교체 필요
+      afterImage: "/images/자세4.jpeg", // 실제 이미지로 교체 필요
     },
   ];
 
@@ -144,7 +144,7 @@ export default function SuccessStories() {
                     </div>
                   </div>
                   <div className="flex-1 relative">
-                    <div className="absolute top-2 left-2 bg-rose-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
+                    <div className="absolute top-2 left-2 bg-rose-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
                       AFTER
                     </div>
                     <div className="relative w-full h-64 rounded-lg overflow-hidden shadow-md">
@@ -191,7 +191,7 @@ export default function SuccessStories() {
                         />
                       </svg>
                     </button>
-                    <button
+                    {/* <button
                       onClick={toggleAutoPlay}
                       className={`text-sm font-medium px-3 py-1 rounded-full transition-colors ${
                         isPlaying
@@ -203,7 +203,7 @@ export default function SuccessStories() {
                       }
                     >
                       {isPlaying ? "자동 재생 중" : "자동 재생"}
-                    </button>
+                    </button> */}
                     <button
                       onClick={handleNext}
                       className="text-rose-600 hover:text-rose-800 transition-colors"
@@ -252,7 +252,7 @@ export default function SuccessStories() {
         </div>
 
         <div className="mt-12 text-center">
-          <button className="bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-md hover:shadow-lg">
+          <button className="bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-md hover:shadow-lg animate-bounce">
             나도 실력 향상 시작하기
           </button>
         </div>

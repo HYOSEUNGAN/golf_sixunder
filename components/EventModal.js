@@ -29,7 +29,7 @@ export default function EventModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed top-[72px] left-0 right-0 z-30 bg-green-700 text-white shadow-md">
+    <div className="fixed top-[72px] left-0 right-0 z-30 bg-red-700 text-white shadow-md">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
@@ -48,7 +48,7 @@ export default function EventModal() {
             </button>
             <button
               onClick={closeModal}
-              className="bg-white text-green-700 px-2 py-1 rounded text-sm font-bold hover:bg-gray-100"
+              className="bg-white text-red-700 px-2 py-1 rounded text-sm font-bold hover:bg-gray-100"
             >
               닫기
             </button>

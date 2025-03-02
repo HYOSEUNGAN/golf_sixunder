@@ -1,4 +1,12 @@
+"use client";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import Image from "next/image";
+
 export default function About() {
+  const textAnimation = useScrollAnimation({ threshold: 0.2 });
+  const imageAnimation = useScrollAnimation({ threshold: 0.2 });
+  const featureAnimation = useScrollAnimation({ threshold: 0.3 });
+
   return (
     <section id="about" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -6,18 +14,34 @@ export default function About() {
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
             식스언더골프클럽 소개
           </h2>
-          <div className="w-16 h-1 bg-green-700 mx-auto"></div>
+          <div className="w-40 h-1 bg-red-700 mx-auto"></div>
         </div>
 
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <div className="rounded-lg overflow-hidden shadow-xl">
-              {/* 이미지 경로는 public 폴더 기준 */}
-              <div className="bg-gray-300 h-80 w-full"></div>
+          <div
+            ref={imageAnimation.ref}
+            className={`md:w-1/2 mb-8 md:mb-0 md:pr-8 fade-in ${
+              imageAnimation.isVisible ? "visible" : ""
+            }`}
+          >
+            <div className="rounded-lg overflow-hidden shadow-xl relative aspect-[3/2]">
+              {/* 골프 클럽 소개 이미지 */}
+              <Image
+                src="/images/시설1.jpeg"
+                alt="식스언더골프클럽 소개"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
             </div>
           </div>
 
-          <div className="md:w-1/2">
+          <div
+            ref={textAnimation.ref}
+            className={`md:w-1/2 fade-in-up ${
+              textAnimation.isVisible ? "visible" : ""
+            }`}
+          >
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               남양주에서 최고의 골프 경험을 선사합니다
             </h3>
@@ -32,71 +56,35 @@ export default function About() {
               제공하며, 편안하고 프로페셔널한 환경에서 골프의 즐거움을 경험하실
               수 있습니다.
             </p>
-            <div className="flex flex-wrap">
-              <div className="w-1/2 mb-4">
-                <div className="flex items-center">
-                  <svg
-                    className="h-5 w-5 text-green-700 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span>전문 코치진</span>
+            <div ref={featureAnimation.ref} className="flex flex-wrap">
+              {[
+                "전문 코치진",
+                "최신 시설",
+                "맞춤형 프로그램",
+                "첨단 분석 장비",
+              ].map((feature, index) => (
+                <div
+                  key={index}
+                  className={`w-1/2 mb-4 stagger-item ${
+                    featureAnimation.isVisible ? "visible" : ""
+                  } delay-${index * 100}`}
+                >
+                  <div className="flex items-center">
+                    <svg
+                      className="h-5 w-5 text-red-700 mr-2"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                    <span>{feature}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="w-1/2 mb-4">
-                <div className="flex items-center">
-                  <svg
-                    className="h-5 w-5 text-green-700 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span>최신 시설</span>
-                </div>
-              </div>
-              <div className="w-1/2 mb-4">
-                <div className="flex items-center">
-                  <svg
-                    className="h-5 w-5 text-green-700 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span>맞춤형 프로그램</span>
-                </div>
-              </div>
-              <div className="w-1/2 mb-4">
-                <div className="flex items-center">
-                  <svg
-                    className="h-5 w-5 text-green-700 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    ></path>
-                  </svg>
-                  <span>첨단 분석 장비</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

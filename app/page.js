@@ -11,6 +11,7 @@ import SuccessStories from "../components/SuccessStories";
 import InstagramFeed from "../components/InstagramFeed";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import Certifications from "../components/Certifications";
 
 export default function Home() {
   // Schema.org 구조화된 데이터
@@ -20,10 +21,11 @@ export default function Home() {
     name: "식스언더골프클럽",
     description:
       "남양주 No.1 골프 교육 클럽으로 최고의 교육과 시설을 제공합니다.",
-    url: "https://www.sixundergolf.com",
+    url: "https://golf-sixunder.vercel.app/",
     telephone: "031-123-4567",
     address: {
       "@type": "PostalAddress",
+
       streetAddress: "OO로 123번길 45",
       addressLocality: "남양주시",
       addressRegion: "경기도",
@@ -72,10 +74,11 @@ export default function Home() {
       <About />
       <Services />
       <FullSwing />
+      {/* <Pricing /> */}
       <SuccessStories />
-      <Pricing />
-      <Experience />
       <InstagramFeed />
+      <Certifications />
+      <Experience />
       <Contact />
       <Footer />
     </main>

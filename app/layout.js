@@ -15,9 +15,17 @@ export const metadata = {
   title: "식스언더골프클럽 | 남양주 No.1 골프 레슨 및 트레이닝",
   description:
     "남양주 최고의 골프 아카데미, 식스언더골프클럽입니다. FULL SWING 시스템과 전문 코치진의 맞춤형 레슨을 경험해보세요.",
+  icons: {
+    icon: "/favicon.ico",
+    // 다양한 크기의 아이콘 추가 가능
+    apple: [
+      { url: "/apple-icon.png" },
+      { url: "/apple-icon-180x180.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   keywords:
     "골프, 골프레슨, 남양주골프, 식스언더골프, 골프아카데미, FULL SWING",
-  metadataBase: new URL("https://www.sixundergolf.com"), // 실제 도메인으로 변경 필요
+  // metadataBase: new URL("https://www.sixundergolf.com"), // 실제 도메인으로 변경 필요
   alternates: {
     canonical: "/",
   },

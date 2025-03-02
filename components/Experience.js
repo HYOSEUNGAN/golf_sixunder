@@ -39,6 +39,7 @@ export default function Experience() {
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
             경력 및 자격
           </h2>
+
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             풍부한 경험과 전문성을 바탕으로 최고의 레슨을 제공합니다
           </p>
