@@ -1,4 +1,34 @@
+"use client";
+import { useState } from "react";
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // SMS 메시지 전송 기능 구현
+    const phoneNumber = "010-5848-2555";
+    const messageBody = `[식스언더골프클럽 문의] 이름: ${formData.name}, 연락처: ${formData.phone}, 내용: ${formData.message}`;
+
+    // SMS 앱 열기 (모바일에서 작동)
+    window.location.href = `sms:${phoneNumber}?body=${encodeURIComponent(
+      messageBody
+    )}`;
+  };
+
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -12,7 +42,7 @@ export default function Contact() {
 
         <div className="flex flex-col md:flex-row">
           <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   htmlFor="name"
@@ -25,6 +55,9 @@ export default function Contact() {
                   id="name"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   placeholder="이름을 입력하세요"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -40,21 +73,9 @@ export default function Contact() {
                   id="phone"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   placeholder="연락처를 입력하세요"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-gray-700 font-medium mb-2"
-                >
-                  이메일
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                  placeholder="이메일을 입력하세요"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -70,6 +91,9 @@ export default function Contact() {
                   rows="5"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
                   placeholder="문의 내용을 입력하세요"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
 
@@ -111,7 +135,7 @@ export default function Contact() {
                 <div>
                   <p className="font-medium text-gray-800 mb-1">주소</p>
                   <p className="text-gray-600">
-                    경기도 남양주시 OO로 123번길 45
+                    남양주 진접 롯데시네마뒤 새마을식당6층
                   </p>
                 </div>
               </div>
@@ -132,7 +156,7 @@ export default function Contact() {
                 </svg>
                 <div>
                   <p className="font-medium text-gray-800 mb-1">전화번호</p>
-                  <p className="text-gray-600">031-123-4567</p>
+                  <p className="text-gray-600">010-5848-2555</p>
                 </div>
               </div>
 
@@ -147,12 +171,14 @@ export default function Contact() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
                   />
                 </svg>
                 <div>
-                  <p className="font-medium text-gray-800 mb-1">이메일</p>
-                  <p className="text-gray-600">info@sixundergolf.com</p>
+                  <p className="font-medium text-gray-800 mb-1">예약 방법</p>
+                  <p className="text-gray-600">
+                    네이버플레이스 결제 후 레슨 예약
+                  </p>
                 </div>
               </div>
 
