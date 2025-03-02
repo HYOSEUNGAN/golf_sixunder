@@ -53,9 +53,9 @@ export default function Header() {
           >
             성공 사례
           </Link>
-          <Link href="#pricing" className="text-gray-700 hover:text-red-700">
+          {/* <Link href="#pricing" className="text-gray-700 hover:text-red-700">
             가격 안내
-          </Link>
+          </Link> */}
           <Link href="#experience" className="text-gray-700 hover:text-red-700">
             경력
           </Link>
@@ -156,13 +156,13 @@ export default function Header() {
             >
               성공 사례
             </Link>
-            <Link
+            {/* <Link
               href="#pricing"
               className="text-gray-700 hover:text-red-700 py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
               가격 안내
-            </Link>
+            </Link> */}
             <Link
               href="#experience"
               className="text-gray-700 hover:text-red-700 py-2"
