@@ -100,6 +100,14 @@ export default function SuccessStories() {
     setIsPlaying(!isPlaying);
   };
 
+  // 네이버 지도로 이동하는 함수 추가
+  const handleConsultation = () => {
+    window.open(
+      "https://map.naver.com/p/entry/place/1852175573?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=127.1873896&lat=37.7121230&c=17.36,0,0,0,dh",
+      "_blank"
+    );
+  };
+
   const story = stories[currentStory];
 
   return (
@@ -282,8 +290,11 @@ export default function SuccessStories() {
         </div>
 
         <div className="mt-12 text-center">
-          <button className="bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-md hover:shadow-lg animate-bounce">
-            나도 실력 향상 시작하기
+          <button
+            onClick={handleConsultation}
+            className="bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-md hover:shadow-lg animate-bounce cursor-pointer"
+          >
+            지금 무료 상담 받기
           </button>
         </div>
       </div>
