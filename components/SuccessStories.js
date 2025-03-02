@@ -143,6 +143,47 @@ export default function SuccessStories() {
                       />
                     </div>
                   </div>
+
+                  {/* 화살표 추가 */}
+                  <div className="flex items-center justify-center">
+                    <div
+                      className="sm:w-12 sm:h-12 w-8 h-8 bg-rose-600 rounded-full flex items-center justify-center shadow-lg 
+                                   sm:my-0 my-2 transform transition-all duration-300 hover:scale-110 group"
+                    >
+                      {/* 화면 크기에 따라 다른 방향의 화살표 표시 */}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="sm:h-6 sm:w-6 h-4 w-4 text-white group-hover:animate-pulse hidden sm:block"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        {/* 가로 방향 화살표 (sm 이상) */}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="sm:hidden h-4 w-4 text-white group-hover:animate-pulse"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        {/* 세로 방향 화살표 (모바일) */}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 10l7 7m0 0l7-7m-7 7V3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+
                   <div className="flex-1 relative">
                     <div className="absolute top-2 left-2 bg-rose-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
                       AFTER
