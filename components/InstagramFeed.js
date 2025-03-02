@@ -105,7 +105,9 @@ export default function InstagramFeed() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            인스타그램에서 만나는 식스언더골프클럽
+            <span className="bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-transparent bg-clip-text">
+              인스타그램에서 만나는 식스언더골프클럽
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             실시간 소식과 골프 팁을 인스타그램에서 확인하세요
