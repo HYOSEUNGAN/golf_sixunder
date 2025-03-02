@@ -116,8 +116,8 @@ export default function SuccessStories() {
           <div className="w-16 h-1 bg-rose-600 mx-auto mt-4"></div>
         </div>
 
-        <div className="max-w-6xl mx-auto bg-neutral-50 rounded-xl shadow-lg overflow-hidden">
-          <div className="p-8">
+        <div className="max-w-7xl mx-auto bg-neutral-50 rounded-xl shadow-lg overflow-hidden">
+          <div className="p-8 md:p-10">
             <div className="flex flex-col md:flex-row gap-8">
               {/* 전/후 이미지 비교 */}
               <div className="md:w-7/12 overflow-hidden">
@@ -134,7 +134,7 @@ export default function SuccessStories() {
                     <div className="absolute top-2 left-2 bg-neutral-800 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
                       BEFORE
                     </div>
-                    <div className="relative w-full h-64 rounded-lg overflow-hidden shadow-md">
+                    <div className="relative w-full h-80 md:h-96 lg:h-[450px] rounded-lg overflow-hidden shadow-md">
                       <Image
                         src={story.beforeImage}
                         alt={`${story.name} 레슨 전`}
@@ -147,7 +147,7 @@ export default function SuccessStories() {
                     <div className="absolute top-2 left-2 bg-rose-500 text-white px-3 py-1 rounded-full text-sm font-bold z-10">
                       AFTER
                     </div>
-                    <div className="relative w-full h-64 rounded-lg overflow-hidden shadow-md">
+                    <div className="relative w-full h-80 md:h-96 lg:h-[450px] rounded-lg overflow-hidden shadow-md">
                       <Image
                         src={story.afterImage}
                         alt={`${story.name} 레슨 후`}
@@ -160,19 +160,21 @@ export default function SuccessStories() {
               </div>
 
               {/* 설명 텍스트 */}
-              <div className="md:w-5/12 flex flex-col justify-center">
+              <div className="md:w-5/12 flex flex-col justify-between">
                 <div
-                  className={`bg-white p-6 rounded-lg shadow-md transition-opacity duration-500 ease-in-out ${
+                  className={`bg-white p-6 rounded-lg shadow-md transition-opacity duration-500 ease-in-out h-80 md:h-96 lg:h-[450px] flex flex-col ${
                     isTransitioning ? "opacity-50" : "opacity-100"
                   }`}
                 >
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                    {story.name}
-                  </h3>
-                  <p className="text-rose-600 font-semibold mb-4">
-                    레슨 기간: {story.period}
-                  </p>
-                  <p className="text-gray-600 mb-6">{story.description}</p>
+                  <div className="flex-grow flex flex-col justify-center">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                      {story.name}
+                    </h3>
+                    <p className="text-rose-600 font-semibold mb-4">
+                      레슨 기간: {story.period}
+                    </p>
+                    <p className="text-gray-600 mb-6">{story.description}</p>
+                  </div>
                   <div className="flex justify-center space-x-8 items-center">
                     <button
                       onClick={handlePrev}
@@ -191,19 +193,6 @@ export default function SuccessStories() {
                         />
                       </svg>
                     </button>
-                    {/* <button
-                      onClick={toggleAutoPlay}
-                      className={`text-sm font-medium px-3 py-1 rounded-full transition-colors ${
-                        isPlaying
-                          ? "bg-rose-100 text-rose-800"
-                          : "bg-neutral-100 text-neutral-600"
-                      }`}
-                      aria-label={
-                        isPlaying ? "자동 재생 끄기" : "자동 재생 켜기"
-                      }
-                    >
-                      {isPlaying ? "자동 재생 중" : "자동 재생"}
-                    </button> */}
                     <button
                       onClick={handleNext}
                       className="text-rose-600 hover:text-rose-800 transition-colors"
@@ -222,28 +211,28 @@ export default function SuccessStories() {
                       </svg>
                     </button>
                   </div>
-                </div>
-                <div className="text-center mt-4 flex justify-center items-center">
-                  <span className="text-sm text-gray-500 mr-3">
-                    {currentStory + 1} / {stories.length}
-                  </span>
-                  <div className="flex space-x-2">
-                    {stories.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          stopSlideTimer();
-                          setCurrentStory(index);
-                          if (isPlaying) startSlideTimer();
-                        }}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          currentStory === index
-                            ? "bg-rose-600"
-                            : "bg-neutral-300"
-                        }`}
-                        aria-label={`${index + 1}번 스토리로 이동`}
-                      />
-                    ))}
+                  <div className="text-center mt-4 flex justify-center items-center">
+                    <span className="text-sm text-gray-500 mr-3">
+                      {currentStory + 1} / {stories.length}
+                    </span>
+                    <div className="flex space-x-2">
+                      {stories.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            stopSlideTimer();
+                            setCurrentStory(index);
+                            if (isPlaying) startSlideTimer();
+                          }}
+                          className={`w-2 h-2 rounded-full transition-colors ${
+                            currentStory === index
+                              ? "bg-rose-600"
+                              : "bg-neutral-300"
+                          }`}
+                          aria-label={`${index + 1}번 스토리로 이동`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
